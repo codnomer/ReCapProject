@@ -11,7 +11,7 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
 
-            Car testCar = new Car { BrandId = 2, ColorId = 1, DailyPrice = 50.0f, Description = "Tofas", Id = 1, ModelYear = 2014 };
+            Car testCar = new Car { BrandId = 2, ColorId = 1, DailyPrice = 50, Description = "Tofas", CarId = 5, ModelYear = 2014 };
             CarManager carManager = new CarManager(new EfCarDal());
             var result = carManager.GetCarsByColorId(1);
 
