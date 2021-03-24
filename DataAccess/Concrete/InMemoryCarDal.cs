@@ -3,6 +3,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete
@@ -15,9 +16,9 @@ namespace DataAccess.Concrete
         {
             _cars = new List<Car>
             {
-                new Car{Id=1,BrandId=1,ColorId=1,DailyPrice=100.000,Description="Şehir İçi konfor için ideal",ModelYear=2017},
-                new Car{Id=2,BrandId=2,ColorId=2,DailyPrice=200.000,Description="Hava atmak istiyorsanız bu arabayı seçmelisiniz",ModelYear=1990},
-                new Car{Id=3,BrandId=3,ColorId=3,DailyPrice=150.000,Description="Hızlı ve güvenli",ModelYear=2012}
+                new Car{Id=1,BrandId=1,ColorId=1,DailyPrice=100.000f,Description="Şehir İçi konfor için ideal",ModelYear=2017},
+                new Car{Id=2,BrandId=2,ColorId=2,DailyPrice=200.000f,Description="Hava atmak istiyorsanız bu arabayı seçmelisiniz",ModelYear=1990},
+                new Car{Id=3,BrandId=3,ColorId=3,DailyPrice=150.000f,Description="Hızlı ve güvenli",ModelYear=2012}
             };
         }
 
@@ -38,11 +39,19 @@ namespace DataAccess.Concrete
 
         }
 
-        
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<Car> GetById(int id)
         {
             return _cars.Where(c => c.Id == id).ToList();
+        }
+
+        public Car GetById(Expression<Func<Car, bool>> filter = null)
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Car car)
