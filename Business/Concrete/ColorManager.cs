@@ -23,7 +23,7 @@ namespace Business.Concrete
 
         public Color GetById(int colorId)
         {
-            return _ıcolor.GetById(c=>c.ColorId==colorId);
+            return _ıcolor.Get(c=>c.ColorId==colorId);
         }
     }
 }
