@@ -10,28 +10,26 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //AddingTest();
-            //TestingDtos();
             
-            CarManager carManager = new CarManager(new EfCarDal());
-            carManager.Add(new Car { BrandId = 8, CarId = 10, CarName = "Vosvos", ColorId = 10, DailyPrice = 100, Description = "Temiz bir araba", ModelYear = 2002 });
-            carManager.Add(new Car { BrandId = 7, CarId = 12, CarName = "BMW", ColorId = 8, DailyPrice = 130, Description = "Temiz bir araba", ModelYear = 2020 });
-            carManager.Add(new Car { BrandId = 9, CarId = 11, CarName = "Passat", ColorId = 9, DailyPrice = 230, Description = "Temiz bir araba", ModelYear = 2012 });
-            carManager.Add(new Car { BrandId = 10, CarId = 13, CarName = "Ferrari", ColorId = 11, DailyPrice = 330, Description = "Temiz bir araba", ModelYear = 2019 });
-
-            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-            customerManager.Add(new Customers { CompanyName = "Koc Holding", CostumerId = 1, Email = "xxx@gmail.com", FirstName = "Ömer", LastName = "Demir", Password = "123456", UserId = 1 });
-            customerManager.Add(new Customers { CompanyName = "Sabancı Holding", CostumerId = 2, Email = "x33@gmail.com", FirstName = "Mert", LastName = "Demirkıran", Password = "12345", UserId = 2 });
-            customerManager.Add(new Customers { CompanyName = "a", CostumerId = 3, Email = "x22@gmail.com", FirstName = "Onur", LastName = "Demirci", Password = "1234", UserId = 3 });
 
 
+            EfCarDal efCarDal = new EfCarDal();
+            CarManager carManager = new CarManager(efCarDal);
 
+            EfBrandDal efBrandDal = new EfBrandDal();
+            BrandManager brandManager = new BrandManager(efBrandDal);
 
-            foreach (var custom in customerManager.GetAll().Data)
-            {
-                Console.WriteLine(custom.CompanyName,custom.UserFirstName,custom.UserLastName,custom.UserMail);
-            }
+            EfRentalDal efRentalDal = new EfRentalDal();
+            RentalManager rentalManager = new RentalManager(efRentalDal);
 
+            EfUserDal efUserDal = new EfUserDal();
+            UserManager userManager = new UserManager(efUserDal);
+
+            EfCustomerDal efCustomerDal = new EfCustomerDal();
+            CustomerManager customerManager = new CustomerManager(efCustomerDal);
+
+            Users user = new Users { FirstName = "Ömer", LastName = "Demirhan", Email = "demrh@gmail.com", Password = "******", UserId = 4 };
+            Customers customer = new Customers { CompanyName = "Ömer Demirhan", UserId = 4, CostumerId = 12 };
 
 
 
