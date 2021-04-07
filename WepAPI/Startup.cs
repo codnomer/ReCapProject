@@ -28,7 +28,7 @@ namespace WepAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<IBrandService, BrandManager>();
+           // services.AddSingleton<IBrandService, BrandManager>();
             
             
         }
