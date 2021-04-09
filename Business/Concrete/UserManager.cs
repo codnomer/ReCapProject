@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConserns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -20,10 +21,10 @@ namespace Business.Concrete
         {
             _user = user;
         }
-
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(Users user)
         {
-            ValidationTool.Validate(new UserValidator(), user);
+            
             _user.Add(user);
             return new SuccessResult(Messages.UserAdding);
         }
